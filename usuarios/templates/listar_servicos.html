@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Serviços{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Serviços</h1>
+<a href="{% url 'adicionar_servico' %}" class="btn btn-primary mb-3">Adicionar Serviço</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for servico in servicos %}
+        <tr>
+            <td>{{ servico.nome_cliente }}</td>
+            <td>{{ servico.tipo_servico }}</td>
+            <td>{{ servico.data_servico }}</td>
+            <td>
+                <a href="{% url 'deletar_servico' servico.id %}" class="btn btn-danger btn-sm">Deletar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-center">Nenhum serviço cadastrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'listar_usuarios' %}" class="btn btn-secondary">Ir para Usuários</a>
+{% endblock %}

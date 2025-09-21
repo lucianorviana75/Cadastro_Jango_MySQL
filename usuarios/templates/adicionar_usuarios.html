@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar Usuário{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Adicionar Usuário</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" name="nome" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Adicionar</button>
+    <a href="{% url 'listar_usuarios' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

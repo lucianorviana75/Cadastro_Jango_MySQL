@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar Serviço{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Adicionar Serviço</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">Nome do Cliente</label>
+        <input type="text" name="nome_cliente" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Data do Serviço</label>
+        <input type="date" name="data_servico" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tipo de Serviço</label>
+        <input type="text" name="tipo_servico" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Adicionar</button>
+    <a href="{% url 'listar_servicos' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
